@@ -1,0 +1,23 @@
+{
+  "name": "playwright_learning",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/minamagdi/Playwright-Learning.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/minamagdi/Playwright-Learning/issues"
+  },
+  "homepage": "https://github.com/minamagdi/Playwright-Learning#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.55.0",
+    "@types/node": "^24.3.1"
+  }
+}
