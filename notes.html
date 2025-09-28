@@ -1,0 +1,71 @@
+<!--  1 -->
+<!-- /* use this command to generate code using playwright codegen
+    npx playwright codegen -o tests/heroKuApp.ts 
+    will create a file named heroKuApp.ts inside tests folder
+*/ -->
+
+
+<!--  2
+/* use this command to run test using its title
+    npx playwright test -g "test codegen example"
+    will run the test with the title "test codegen example"
+*/
+
+//  3
+/**
+ * trace => useful for debugging failed tests
+ * it will record a trace for each test, when the test fails, you can open the trace file in the trace viewer and see what went wrong
+ * you can enable trace in 2 ways
+ * from config file trace: 'on-first-retry'
+ * from command line npx playwright test --trace on-first-retry
+ *
+ * to open trace viewer use this command
+ * npx playwright show-trace trace.zip
+ * 
+ * to open report use this command
+ * npx playwright show-report
+ */ -->
+
+<!--  4
+/* locators
+    - getByRole
+    - getByLabel
+    - getByPlaceholder
+    - getByText
+    - getByAltText
+    - getByTitle
+    - locator(css selector)
+        - [attribute='value']
+        - tagname[attribute='value']
+        - [attribute^='value'] (starts with)
+        - [attribute$='value'] (ends with)
+        - [attribute*='value'] (contains)
+        - [attribute1='value'][attribute2='value'] (and)
+        - [attribute1='value'], [attribute2='value'] (or)
+        - [attribute='value'] > div (child) direct child
+        - [attribute='value'] div:nth-child(n) (nth child)
+        - page.locator([attribute='value'] div).nth(n) (nth child)
+        - page.locator([attribute='value'] div).first() (first child)
+        - [attribute='value'] div (descendant) any level of child
+    - locator(xpath)
+        - //tagname[@attribute='value']
+        - //*[@attribute='value']
+        - //tagname[contains(@attribute,'value')]
+        - //tagname[text()='value']
+        - //*[text()='value']
+        - (//tagname[@attribute='value'])[n] (nth element)
+                - (//div[@class="login-box"]/form/div)[1]
+        - //tagname[@attribute='value']//tagname (descendant) any level of child
+        - //tagname[@attribute='value' and @attribute='value'] (and)
+        - //input[@class="submit-button" and @name="login-button"]
+        - //tagname[@attribute='value'] or tagname[@attribute='value'] (or)
+        - //input[@class="submit-button" or @name="login-button"]
+        - (//div[@id="login_button_container"]/div//div/following-sibling::div)[2] (following sibling)
+        - (//div[@id="login_button_container"]/div//div/preceding-sibling::div)[1] (preceding sibling)
+        - (//div[@id="login_button_container"]/div//div/following-sibling::div)[2]/parent::div (parent)
+        - (//div[@id="login_button_container"]/div//div/following-sibling::div)[last()] (last element)
+    - locator(id) 
+        - #id
+    - locator(class)
+        - .classname
+  */
