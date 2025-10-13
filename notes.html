@@ -11,7 +11,7 @@
     will run the test with the title "test codegen example"
 */
 
-//  3
+<!--  3
 /**
  * trace => useful for debugging failed tests
  * it will record a trace for each test, when the test fails, you can open the trace file in the trace viewer and see what went wrong
@@ -28,12 +28,13 @@
 
 <!--  4
 /* locators
-    - getByRole
-    - getByLabel
-    - getByPlaceholder
-    - getByText
+    - getByRole         => button, link, checkbox, textbox, heading, etc
+    - getByLabel        => input fields associated with a label or aria-label attribute
+    - getByPlaceholder  => input fields with a placeholder attribute
+    - getByText 
     - getByAltText
     - getByTitle
+    - getByTestId        => data-testid attribute
     - locator(css selector)
         - [attribute='value']
         - tagname[attribute='value']
@@ -68,4 +69,26 @@
         - #id
     - locator(class)
         - .classname
-  */
+*/
+/>
+<!--  5
+  promises
+    - New tab 
+        const [browserTabs] = await Promise.all([
+            page.waitForEvent('popup'),
+            await page.locator('a[href="/windows/new"]').click()
+        ]);
+    - New window
+        const [newWindow] = await Promise.all([
+        page.context().waitForEvent('page'),
+        await page.locator('button[onclick="newwindow()"]').click()
+        ]);
+
+    - File download
+        const download = await Promise.all([
+        page.waitForEvent('download'), page.locator('[href="download/image2.jpeg"]').click()
+    ])
+    - File upload
+        const upload = await Promise.all([
+        page.waitForEvent('filechooser'), page.locator('#file-upload').click()
+    ])
