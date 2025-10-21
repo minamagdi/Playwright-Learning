@@ -115,3 +115,16 @@
         - install
         - npm install rimraf mkdirp --save-dev
 */
+
+
+/*
+* 7- to open downloaded allure report in one command from github actions
+        1- download allure report as zip artifact
+        2- move it new folder
+        3- open cmd
+            1- install allure globally
+                npm i -g allure-playwright
+                cd /D filepath (allure folder)
+            2- run these commands
+                cd /D C:\Users\Asus\OneDrive\Desktop\allure
+                npm allure open .  <===== dot means current directory
