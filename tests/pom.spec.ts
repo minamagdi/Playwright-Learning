@@ -13,7 +13,6 @@ test('POM demo - login and add to cart @smoke', async ({page, loginPage, product
     await productPage.clickOnCartButton();
 
     await productPage.verifyProductAddedToCart();
-
     await loginPage.takeScreenShot('./tests/screenshots/cartPage1.png');
 })
 
