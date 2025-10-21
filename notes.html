@@ -27,6 +27,9 @@
  * 
  * to open report use this command
  * npx playwright show-report
+ *
+ * to run tests using tag
+    * npx playwright test specFilename --grep "@smoke"
  */ -->
 
 <!--  4
@@ -95,3 +98,20 @@
         const upload = await Promise.all([
         page.waitForEvent('filechooser'), page.locator('#file-upload').click()
     ])
+
+/* 6  Allure Report */
+/*
+* to add allure report to playwright 
+* 1- install 
+    - npm i -D allure-commandline
+    - npm i -D allure-playwright
+* 2- to open the report
+    - update playwright.config.ts
+        reporter: [['html'], ['allure-playwright']]
+    - npx allure generate allure-results --clean -o allure-report
+    - npx allure open allure-report
+
+    - to make allure generate report automatically
+        - install
+        - npm install rimraf mkdirp --save-dev
+*/
