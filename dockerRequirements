@@ -1,0 +1,8 @@
+# Docker Requirements
+
+- get an image with nodejs/playwright installed
+- set the working directory
+- copy our code to the container
+- install java and assign environment variables
+- run npm install to set up our project
+- run the required test cases

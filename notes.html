@@ -128,3 +128,46 @@
             2- run these commands
                 cd /D C:\Users\Asus\OneDrive\Desktop\allure
                 npm allure open .  <===== dot means current directory
+
+*/
+<!--  8
+/* Java installation in Dockerfile
+    0- from extensions install docker extension in vs code
+    1- get the image with playwright
+    from playwright docs get this command and run it in terminal
+        docker pull mcr.microsoft.com/playwright:focal  
+    2- create a dockerfile in the project root folder
+    3- add these lines to dockerfile
+        FROM mcr.microsoft.com/playwright:focal
+        WORKDIR /appHome
+        COPY . .
+        RUN apt-get update &&\
+            apt-get install -y openjdk-17-jre-headless &&\
+            npm install
+        ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+        ENV commandToRunTests="npm playwright test"
+        CMD ["sh", "-c", "$commandToRunTests"]
+    4- build the docker image
+        docker build -t docker-playwright .
+    5- run the docker image
+        docker run --rm docker-playwright\
+        or
+        docker run --rm -e commandToRunTests="npx playwright test pom" docker-playwright
+    6- to run using docker compose
+        docker-compose up
+        after run tests to close docker
+        run this command docker-compose down
+
+        ----------------------------------------------------------
+        jenkins setup to run tests
+        1- install jenkins in your machine
+        2- install java 21 or 17 in your machine
+        3- open jenkins in browser localhost:8080
+        4- install suggested plugins => ansicolor, html publisher
+        5- create new freestyle project
+        6- in build section add execute batch command
+            npm run test
+        7- save and run
+        8- on script console add this line to read html report
+        System.setProperty("hudson.model.DirectoryBrowserSupport.CSP", "")
+        9- click on build now
