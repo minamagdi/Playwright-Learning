@@ -122,6 +122,9 @@ test('actions demo - frames', async ({page})=> {
     await expect(bottomFrame).toHaveText('BOTTOM');
 
     let topFrame = page.frame('frame-top'); // get iframe by id or name
+    if (!topFrame) {
+        throw new Error('Top frame "frame-top" not found');
+    }
     let topFrameChilds = topFrame.childFrames();
     let leftFrame = topFrameChilds[0];
     let middleFrame = topFrameChilds[1];
