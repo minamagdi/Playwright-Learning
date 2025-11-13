@@ -4,9 +4,35 @@ on:
     - cron: '0 12 * * *'  # Runs at 12:00 every day
   push:
     branches:
-      - '**'
+      - 'master'
   pull_request:
     branches: [ main ]
+  workflow_dispatch:
+    inputs:
+      test-to-run:
+        description: 'Add your npx code here'
+        required: false
+        default: 'npm run script:to:run'
+        type: string
+      workers:
+        description: 'Number of workers to use'
+        required: false
+        default: '1'
+        type: choice
+        options:
+          - '1'
+          - '2'
+          - '3'
+          - '4'
+      browser:
+        description: 'Browser to run tests on'
+        required: false
+        default: 'chromium'
+        type: choice
+        options:
+          - 'chromium'
+          - 'firefox'
+          - 'webkit'
 jobs:
   playwright-tests:
     timeout-minutes: 60
@@ -21,7 +47,12 @@ jobs:
     - name: Install Playwright Browsers
       run: npx playwright install chromium --with-deps
     - name: Run Playwright tests
-      run: npm run test
+      env:
+        test-to-run: ${{github.event.inputs.test-to-run || 'npm run script:to:run'}}
+        workers: ${{github.event.inputs.workers || '1'}}
+        browser: ${{github.event.inputs.browser || 'chromium'}}
+      run: |
+        ${{env.test-to-run}} -- --workers=${{ env.workers }} --project=${{ env.browser }} || npm run posttest
     - name: Upload Playwright Report
       uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}

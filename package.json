@@ -9,7 +9,7 @@
     "open:reports": "npx allure open ./allure-report",
     "pretest": "npm install && npx playwright install --with-deps && npm run clean:reports",
     "posttest": "npm run pretest && npm run generate:reports",
-    "script:to:run": "npx playwright test actions",
+    "script:to:run": "npx playwright test pom",
     "test": "npm run script:to:run || npm run posttest"
   },
   "repository": {
