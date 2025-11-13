@@ -1,4 +1,4 @@
-import {test, expect} from '../fixtures/fixture';
+import {test} from '../fixtures/fixture';
 import * as testData from '../testData/testData.json';
 
 test('POM demo - login and add to cart @smoke', async ({page, loginPage, productPage})=> {
